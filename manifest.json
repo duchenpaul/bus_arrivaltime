@@ -1,0 +1,9 @@
+{
+  "domain": "bus_arrivaltime",
+  "name": "bus_arrivaltime",
+  "documentation": "https://github.com/home-assistant/example-custom-config/tree/master/custom_components/example_sensor/",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": []
+}
+
