@@ -22,6 +22,7 @@ yaml_config_templ = """
     lineno: '{lineno}'
     targetorder: '{targetorder}'
     cityid: '{cityid}'
+    #timerange: '083000-093000,174500-183000'
 """
 
 link = r'''https://web.chelaile.net.cn/ch5/?src=webapp_qqwallet&utm_source=webapp_qqwallet&utm_medium=entrance&hideFooter=1&showFav=0&homePage=around&_wv=1027&showTopLogo=0&supportSubway=1&cityId=018&cityName=%E5%8D%97%E4%BA%AC&cityVersion=2#!/linedetail/2557257721/1/%E6%98%9F%E7%81%AB%E8%B7%AF%C2%B7%E6%B1%87%E6%96%87%E8%B7%AF/%E6%98%9F%E7%81%AB%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E4%B8%9C/6/668'''
