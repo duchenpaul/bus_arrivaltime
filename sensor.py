@@ -135,11 +135,11 @@ class BusTravelTimeSensor(Entity):
 
             try:
                 response = requests.get(API_URL,params=self._query_dict,headers = HEADERS)
-            except ReadTimeout:
+            except requests.ReadTimeout:
                 _Log.error("快上车：连接超时！")
-            except ConnectionError:
+            except requests.ConnectionError:
                 _Log.error("快上车：连接错误！")
-            except RequestException:
+            except requests.RequestException:
                 _Log.error("快上车：发生未知错误！")
             res = response.content.decode('utf-8').replace('**YGKJ','').replace('YGKJ##','')
             json_obj = json.loads(res)
