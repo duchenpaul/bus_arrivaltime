@@ -145,14 +145,17 @@ class BusTravelTimeSensor(Entity):
             json_obj = json.loads(res)
             if 'buses' in json_obj['jsonr']['data']:
                 bus_list = []
+                self.attributes = {}
                 for i in range(len(json_obj['jsonr']['data']['buses'])-1,-1,-1):
                     #print(json_obj['jsonr']['data']['buses'][i])
                     if len(json_obj['jsonr']['data']['buses'][i]['travels']) !=0:
                         bus_arrialtime = datetime.fromtimestamp(json_obj['jsonr']['data']['buses'][i]['travels'][0]['arrivalTime']//1000.0)
                         bus_traveltime = round(json_obj['jsonr']['data']['buses'][i]['travels'][0]['travelTime']/60,2)
-                        bus_list.append({'bus_arrialtime':bus_arrialtime,'bus_traveltime':bus_traveltime})
+                        bus_order = json_obj['jsonr']['data']['buses'][i]['travels'][0]['order'] - json_obj['jsonr']['data']['buses'][i]['order']
+                        bus_list.append({'bus_arrialtime':bus_arrialtime,'bus_traveltime':bus_traveltime,'bus_order':bus_order})
                 for i in range(len(bus_list)):
                     self.attributes['第{}台'.format(i+1)] = bus_list[i]['bus_traveltime']
+                    self.attributes['第{}台站数'.format(i+1)] = bus_list[i]['bus_order']
                 if len(bus_list) != 0:
                     self._state = bus_list[0]['bus_traveltime']
                     self.attributes['预计到站时间'] = str(bus_list[0]['bus_arrialtime'])[-8:]
